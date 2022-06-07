@@ -5,10 +5,18 @@ import "./clients.styles.css";
 
 const Clients = () => {
   const [clients, setClients] = useState([]);
+  const [isfetching, setFetching] = useState(false);
+  const [iserror, setError] = useState(false);
 
   const getAccounts = async () => {
-    const clients = await apiCaller("/client/");
-    setClients(clients);
+    setFetching(true);
+    try {
+      const clients = await apiCaller("/client/");
+      setClients(clients);
+    } catch (error) {
+      setError(true);
+    }
+    setFetching(false);
   };
 
   useEffect(() => {
@@ -18,7 +26,11 @@ const Clients = () => {
   return (
     <div className="container-clients">
       <section className="cards-clients">
-        {clients.length ? (
+        {isfetching ? (
+          <h1>Loading...</h1>
+        ) : iserror ? (
+          <h1>Error</h1>
+        ) : clients.length ? (
           clients.map((client) => (
             <article>
               <a href={`${client.clientNumber}/accounts`}>
