@@ -1,0 +1,11 @@
+.container-card {
+  border: 1px solid #e6e6e6;
+  border-radius: 5px;
+  padding: 20px;
+
+}
+
+.container-card:hover {
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
+  cursor: pointer;
+}
