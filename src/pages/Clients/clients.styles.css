@@ -4,3 +4,7 @@
   grid-gap: .5rem;
   margin: 1rem;
 }
+
+a {
+  text-decoration: none;
+}

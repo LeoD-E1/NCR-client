@@ -18,13 +18,17 @@ const Clients = () => {
   return (
     <div className="container-clients">
       <section className="cards-clients">
-        {clients.map((client) => (
-          <article>
-            <a href={`${client.clientNumber}/accounts`}>
-              <Card info={client} />
-            </a>
-          </article>
-        ))}
+        {clients.length ? (
+          clients.map((client) => (
+            <article>
+              <a href={`${client.clientNumber}/accounts`}>
+                <Card info={client} />
+              </a>
+            </article>
+          ))
+        ) : (
+          <h3 className="no-clients-title">No hay clientes</h3>
+        )}
       </section>
     </div>
   );

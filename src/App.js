@@ -1,6 +1,5 @@
 import Clients from "./pages/Clients/Clients";
 import Client from "./pages/Client";
-import "./styles/App.css";
 import { Switch, Route } from "wouter";
 
 function App() {
