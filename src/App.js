@@ -1,5 +1,5 @@
 import Clients from "./pages/Clients/Clients";
-import Client from "./pages/Client";
+import ClientAccounts from "./pages/Client/ClientAccounts";
 import { Switch, Route } from "wouter";
 
 function App() {
@@ -7,8 +7,11 @@ function App() {
     <div className="App">
       <Switch>
         <Route path="/" component={Clients} />
-        <Route path="/:clientNumber/accounts" component={Client} />
-        <Route path="/:clientNumber/accounts/:account" component={Client} />
+        <Route path="/account/:clientNumber" component={ClientAccounts} />
+        <Route
+          path="/:clientNumber/accounts/:account"
+          component={ClientAccounts}
+        />
       </Switch>
     </div>
   );

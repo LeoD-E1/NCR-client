@@ -32,11 +32,12 @@ const Clients = () => {
           <h1>Error</h1>
         ) : clients.length ? (
           clients.map((client) => (
-            <article>
-              <a href={`${client.clientNumber}/accounts`}>
-                <Card info={client} />
-              </a>
-            </article>
+            <a
+              href={`/account/${client.clientNumber}`}
+              key={client.clientNumber}
+            >
+              <Card info={client} />
+            </a>
           ))
         ) : (
           <h3 className="no-clients-title">No hay clientes</h3>
