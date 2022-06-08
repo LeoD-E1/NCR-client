@@ -1,10 +1,12 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, Suspense } from "react";
 import { useLocation } from "wouter";
 import apiCaller from "../../utils/apiCaller";
 import Card from "../../components/Card/Card";
 import "../Clients/clients.styles.css";
 import Layout from "../../components/Layout/Layout";
 import Transfers from "../../components/transfers/Transfers";
+
+const Modal = React.lazy(() => import("../../components/modal/Modal"));
 
 const ClientAccounts = () => {
   const [location] = useLocation();
@@ -14,6 +16,7 @@ const ClientAccounts = () => {
   const [fetching, setFetching] = useState(false);
   const [error, setError] = useState(false);
   const [limit, setLimit] = useState(true);
+  const [modal, setModal] = useState(false);
 
   const limitAccounts = !limit ? accounts.length : 5;
 
@@ -28,6 +31,10 @@ const ClientAccounts = () => {
     setFetching(false);
   };
 
+  const showModal = () => {
+    setModal(true);
+  };
+
   useEffect(() => {
     getAccounts();
     // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -35,6 +42,11 @@ const ClientAccounts = () => {
 
   return (
     <div>
+      <Suspense fallback={<div>loading...</div>}>
+        <section>
+          {!modal ? null : <Modal info={accounts} closeModal={setModal} />}
+        </section>
+      </Suspense>
       <header
         style={{
           display: "flex",
@@ -49,6 +61,7 @@ const ClientAccounts = () => {
             {limit ? "Show more" : "Show less"}
           </button>
         )}
+        <button onClick={showModal}>Transferir</button>
       </header>
       <section className="cards-clients">
         {fetching ? (
@@ -56,14 +69,11 @@ const ClientAccounts = () => {
         ) : error ? (
           <h1>Error</h1>
         ) : accounts.length ? (
-          accounts.slice(0, limitAccounts).map((account) => (
-            <a
-              href={`${location}/${account.accountNumber}`}
-              key={account.accountNumber}
-            >
-              <Card info={account} type="account" />
-            </a>
-          ))
+          accounts
+            .slice(0, limitAccounts)
+            .map((account) => (
+              <Card info={account} type="account" key={account._id} />
+            ))
         ) : (
           <h3 className="no-account-title">No hay cuentas</h3>
         )}

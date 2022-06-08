@@ -34,9 +34,11 @@ const Transfers = ({ clientNumber }) => {
         ) : error ? (
           <h1>Error</h1>
         ) : transfers.length ? (
-          transfers.map((transfer) => (
-            <Card info={transfer} type="transfer" key={transfer._id} />
-          ))
+          transfers
+            .slice(0, 5)
+            .map((transfer) => (
+              <Card info={transfer} type="transfer" key={transfer._id} />
+            ))
         ) : (
           <h3 className="no-account-title">No hay transferencias</h3>
         )}

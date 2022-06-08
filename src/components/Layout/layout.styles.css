@@ -20,15 +20,33 @@ footer {
 }
 
 .principal {
-  margin-left: 3rem;
-  margin-right: 3rem;
-  margin-bottom: 3rem;
+  position: relative;
+  max-width: 80%;
+  left: 50%;
+  transform: translateX(-50%);
 }
 
-@media  (max-width: 480px) {
+/* @media  (max-width: 480px) {
   .principal {
     margin-left: 1rem;
     margin-right: 1rem;
   }
+} */
+
+
+button {
+  background-color: #fff;
+  border: none;
+  color: #333;
+  font-size: 1.2rem;
+  font-weight: bold;
+  border-radius: 10px;
+  cursor: pointer;
+  padding: .5rem;
+  border: solid 1px #e5e5e5;
+}
+
+button:hover {
+  background-color: #e5e5e5;
 }
   
