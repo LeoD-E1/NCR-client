@@ -1,11 +1,37 @@
 .container-card {
   border: 1px solid #e6e6e6;
   border-radius: 5px;
-  padding: 20px;
-
+  padding: 10px;
 }
 
 .container-card:hover {
   box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
   cursor: pointer;
+}
+
+.card-head {
+  display: flex;
+  justify-content: space-between;
+}
+
+.account-name {
+  font-size: 20px;
+  font-weight: bold;
+}
+
+.account-type {
+  font-size: 12px;
+  font-weight: bold;
+  color: #828282;
+}
+.account-balance {
+  font-size: 20px;
+  font-weight: bold;
+  color: #333;
+}
+
+.card-body {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 }
