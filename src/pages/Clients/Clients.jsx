@@ -41,7 +41,7 @@ const Clients = () => {
                 href={`/account/${client.clientNumber}`}
                 key={client.clientNumber}
               >
-                <Card info={client} />
+                <Card info={client} type="client" />
               </a>
             ))
           ) : (

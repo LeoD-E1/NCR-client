@@ -4,7 +4,7 @@ import "./layout.styles.css";
 const Layout = ({ children }) => {
   return (
     <div className="container-layout">
-      <header>
+      <header className="header-layout">
         <h1>NCR-CLIENT</h1>
       </header>
 

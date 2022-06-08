@@ -4,9 +4,11 @@ import apiCaller from "../../utils/apiCaller";
 import Card from "../../components/Card/Card";
 import "../Clients/clients.styles.css";
 import Layout from "../../components/Layout/Layout";
+import Transfers from "../../components/transfers/Transfers";
 
 const ClientAccounts = () => {
   const [location] = useLocation();
+  const clientNumber = location.split("/")[2];
 
   const [accounts, setAccounts] = useState([]);
   const [fetching, setFetching] = useState(false);
@@ -28,6 +30,7 @@ const ClientAccounts = () => {
 
   useEffect(() => {
     getAccounts();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   return (
@@ -49,12 +52,15 @@ const ClientAccounts = () => {
               href={`${location}/${account.accountNumber}`}
               key={account.accountNumber}
             >
-              <Card info={account} />
+              <Card info={account} type="account" />
             </a>
           ))
         ) : (
           <h3 className="no-account-title">No hay cuentas</h3>
         )}
+      </section>
+      <section className="transfers">
+        <Transfers clientNumber={clientNumber} />
       </section>
     </div>
   );
