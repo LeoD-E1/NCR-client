@@ -1,0 +1,25 @@
+header {
+  background-color: #fff;
+  padding: 0.5rem 1rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+footer {
+  height: 15vh;
+  background-color: #333;
+  color: #fff;
+  display: flex;
+  width: 100%;
+  justify-content: center;
+  align-items: center;
+  position: fixed;
+  bottom: 0;
+}
+
+.principal {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}

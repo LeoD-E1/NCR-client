@@ -3,6 +3,7 @@ import { useLocation } from "wouter";
 import apiCaller from "../../utils/apiCaller";
 import Card from "../../components/Card/Card";
 import "../Clients/clients.styles.css";
+import Layout from "../../components/Layout/Layout";
 
 const ClientAccounts = () => {
   const [location] = useLocation();
@@ -28,9 +29,6 @@ const ClientAccounts = () => {
 
   return (
     <div>
-      <header>
-        <h1>Accounts</h1>
-      </header>
       <section className="cards-clients">
         {isFetching ? (
           <h1>Loading...</h1>
@@ -50,4 +48,10 @@ const ClientAccounts = () => {
   );
 };
 
-export default ClientAccounts;
+const ClientAccountsPage = () => (
+  <Layout>
+    <ClientAccounts />
+  </Layout>
+);
+
+export default ClientAccountsPage;
