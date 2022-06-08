@@ -35,11 +35,20 @@ const ClientAccounts = () => {
 
   return (
     <div>
-      <header>
+      <header
+        style={{
+          display: "flex",
+          justifyContent: "space-between",
+          alignItems: "center",
+          marginBottom: "1rem",
+        }}
+      >
         <h1>Accounts</h1>
-        <button onClick={() => setLimit(!limit)}>
-          {limit ? "Show more" : "Show less"}
-        </button>
+        {accounts.length >= 5 && (
+          <button onClick={() => setLimit(!limit)}>
+            {limit ? "Show more" : "Show less"}
+          </button>
+        )}
       </header>
       <section className="cards-clients">
         {fetching ? (
