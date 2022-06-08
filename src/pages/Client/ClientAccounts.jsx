@@ -9,8 +9,11 @@ const ClientAccounts = () => {
   const [location] = useLocation();
 
   const [accounts, setAccounts] = useState([]);
-  const [isFetching, setFetching] = useState(false);
-  const [isError, setError] = useState(false);
+  const [fetching, setFetching] = useState(false);
+  const [error, setError] = useState(false);
+  const [limit, setLimit] = useState(true);
+
+  const limitAccounts = !limit ? accounts.length : 5;
 
   const getAccounts = async () => {
     setFetching(true);
@@ -31,14 +34,17 @@ const ClientAccounts = () => {
     <div>
       <header>
         <h1>Accounts</h1>
+        <button onClick={() => setLimit(!limit)}>
+          {limit ? "Show more" : "Show less"}
+        </button>
       </header>
       <section className="cards-clients">
-        {isFetching ? (
+        {fetching ? (
           <h1>Loading...</h1>
-        ) : isError ? (
+        ) : error ? (
           <h1>Error</h1>
         ) : accounts.length ? (
-          accounts.map((account) => (
+          accounts.slice(0, limitAccounts).map((account) => (
             <a
               href={`${location}/${account.accountNumber}`}
               key={account.accountNumber}

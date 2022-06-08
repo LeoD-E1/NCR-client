@@ -11,7 +11,10 @@ const Layout = ({ children }) => {
       <main className="principal">{children}</main>
 
       <footer>
-        <p>all rights reserved &copy; {new Date().getFullYear()} | </p>
+        <p>
+          &copy;Leoda technologies | all rights reserved{" "}
+          {new Date().getFullYear()}
+        </p>
       </footer>
     </div>
   );
