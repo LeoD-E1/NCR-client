@@ -12,6 +12,8 @@
 .card-head {
   display: flex;
   justify-content: space-between;
+  margin-top: 5px;
+  margin-bottom: 15px;
 }
 
 .account-name {
@@ -35,4 +37,6 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
+  margin-top: 10px;
+  
 }

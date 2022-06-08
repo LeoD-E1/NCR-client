@@ -29,6 +29,9 @@ const ClientAccounts = () => {
 
   return (
     <div>
+      <header>
+        <h1>Accounts</h1>
+      </header>
       <section className="cards-clients">
         {isFetching ? (
           <h1>Loading...</h1>
@@ -36,7 +39,10 @@ const ClientAccounts = () => {
           <h1>Error</h1>
         ) : accounts.length ? (
           accounts.map((account) => (
-            <a href={`/${account.accountNumber}`} key={account.accountNumber}>
+            <a
+              href={`${location}/${account.accountNumber}`}
+              key={account.accountNumber}
+            >
               <Card info={account} />
             </a>
           ))
