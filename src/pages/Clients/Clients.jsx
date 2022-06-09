@@ -25,7 +25,7 @@ const Clients = () => {
   }, []);
 
   return (
-    <div className="container">
+    <div>
       <header>
         <h1>Clients</h1>
       </header>
