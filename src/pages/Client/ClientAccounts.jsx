@@ -1,4 +1,4 @@
-import React, { useState, useEffect, Suspense } from "react";
+import React, { useState, useEffect } from "react";
 import { useLocation } from "wouter";
 import apiCaller from "../../utils/apiCaller";
 import Card from "../../components/Card/Card";
@@ -6,7 +6,7 @@ import "../Clients/clients.styles.css";
 import Layout from "../../components/Layout/Layout";
 import Transfers from "../../components/transfers/Transfers";
 
-const Modal = React.lazy(() => import("../../components/modal/Modal"));
+import Modal from "../../components/modal/Modal";
 
 const ClientAccounts = () => {
   const [location] = useLocation();
@@ -42,11 +42,7 @@ const ClientAccounts = () => {
 
   return (
     <div>
-      <Suspense fallback={<div>loading...</div>}>
-        <section>
-          {!modal ? null : <Modal info={accounts} closeModal={setModal} />}
-        </section>
-      </Suspense>
+      {!modal ? null : <Modal info={accounts} closeModal={setModal} />}
       <header
         style={{
           display: "flex",
@@ -61,7 +57,9 @@ const ClientAccounts = () => {
             {limit ? "Show more" : "Show less"}
           </button>
         )}
-        <button onClick={showModal}>Transferir</button>
+        {!accounts.length ? null : (
+          <button onClick={showModal}>Transfer</button>
+        )}
       </header>
       <section className="cards-clients">
         {fetching ? (

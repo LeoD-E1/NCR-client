@@ -35,7 +35,7 @@ const Transfers = ({ clientNumber }) => {
           <h1>Error</h1>
         ) : transfers.length ? (
           transfers
-            .slice(0, 5)
+            .slice(transfers.length - 5)
             .map((transfer) => (
               <Card info={transfer} type="transfer" key={transfer._id} />
             ))
