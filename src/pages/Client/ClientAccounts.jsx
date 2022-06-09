@@ -7,6 +7,7 @@ import Layout from "../../components/Layout/Layout";
 import Transfers from "../../components/transfers/Transfers";
 
 import Modal from "../../components/modal/Modal";
+import TransferForm from "../../components/transfers/TransferForm";
 
 const ClientAccounts = () => {
   const [location] = useLocation();
@@ -42,7 +43,11 @@ const ClientAccounts = () => {
 
   return (
     <div>
-      {!modal ? null : <Modal info={accounts} closeModal={setModal} />}
+      {!modal ? null : (
+        <Modal closeModal={setModal} title={"Transfers"}>
+          <TransferForm accounts={accounts} />
+        </Modal>
+      )}
       <header
         style={{
           display: "flex",
