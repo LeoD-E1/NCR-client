@@ -10,7 +10,7 @@ const Layout = ({ children }) => {
 
       <main className="principal">{children}</main>
 
-      <footer>
+      <footer className="footer-layout">
         <p>
           &copy;Leoda technologies | all rights reserved{" "}
           {new Date().getFullYear()}

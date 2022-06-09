@@ -1,15 +1,20 @@
 import React, { useState } from "react";
 import "./modal.styles.css";
 import XButton from "../XButton";
-import apiCaller from "../../utils/apiCaller";
 
 const Modal = (props) => {
   const { info, closeModal } = props;
+
   const [query, setQuery] = useState({
     clientNumber: info[0].clientNumber,
     fromAccount: null,
     toAccount: null,
     amount: null,
+  });
+
+  const [queryResponse, setQueryResponse] = useState({
+    status: null,
+    message: "",
   });
 
   const handleChange = (evt) => {
@@ -36,29 +41,30 @@ const Modal = (props) => {
   };
 
   const handleSubmit = async (evt) => {
-    console.log(query);
     evt.preventDefault();
     const response = await generateTransfer();
-    console.log(response);
+    if (response.status === 200) {
+      setTimeout(() => {
+        window.location.reload();
+      }, 1500);
+    }
+    setQueryResponse({ status: response.status, message: response.message });
   };
 
   return (
     <div className="modal-container">
       <div className="modal-card">
         <section className="modal-header">
-          <h1>Modal</h1>
+          <h1>Transfer</h1>
           <button className="modal-button" onClick={() => closeModal(false)}>
             <XButton />
           </button>
         </section>
+
         <section className="modal-body">
           <form onSubmit={handleSubmit}>
-            <select
-              id="from-account-select"
-              onChange={handleChange}
-              name="fromAccount"
-            >
-              <option value="">From account</option>
+            <select onChange={handleChange} name="fromAccount">
+              <option value="">From</option>
               {info.map((account) => (
                 <option
                   key={account.accountNumber}
@@ -69,12 +75,8 @@ const Modal = (props) => {
               ))}
             </select>{" "}
             <br />
-            <select
-              id="to-account-select"
-              onChange={handleChange}
-              name="toAccount"
-            >
-              <option value="">To account</option>
+            <select onChange={handleChange} name="toAccount">
+              <option value="">To</option>
               {info.map((account) => (
                 <option
                   key={account.accountNumber}
@@ -88,7 +90,6 @@ const Modal = (props) => {
               <input
                 type="number"
                 name="amount"
-                id="amount"
                 onChange={handleChange}
                 placeholder="Amount to transfer"
               />
@@ -98,6 +99,18 @@ const Modal = (props) => {
             </button>
           </form>
         </section>
+
+        {!queryResponse.status ? null : (
+          <section className="modal-footer">
+            <h4
+              style={{
+                color: queryResponse.status === 200 ? "green" : "red",
+              }}
+            >
+              {queryResponse.message}
+            </h4>
+          </section>
+        )}
       </div>
     </div>
   );

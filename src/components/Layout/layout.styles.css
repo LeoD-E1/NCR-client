@@ -1,20 +1,18 @@
 .header-layout {
   background-color: #fff;
+  text-align: center;
   border-bottom: 1px solid #e5e5e5;
-  padding: 0.5rem 1rem;
   display: flex;
   justify-content: space-between;
   align-items: center;
 }
 
-footer {
+.footer-layout {
+  text-align: center;
   height: 5vh;
   background-color: #333;
   color: #fff;
-  display: flex;
   width: 100%;
-  justify-content: center;
-  align-items: center;
   position: fixed;
   bottom: 0;
 }
@@ -24,15 +22,8 @@ footer {
   max-width: 80%;
   left: 50%;
   transform: translateX(-50%);
+  padding-bottom: 3rem;
 }
-
-/* @media  (max-width: 480px) {
-  .principal {
-    margin-left: 1rem;
-    margin-right: 1rem;
-  }
-} */
-
 
 button {
   background-color: #fff;
