@@ -1,19 +1,19 @@
 import Clients from "./pages/Clients/Clients";
 import ClientAccountsPage from "./pages/Client/ClientAccounts";
-import { Switch, Route } from "wouter";
+import { Switch, Route, Redirect } from "wouter";
+
+const Home = () => {
+  return <Redirect to="/clients" />;
+};
 
 function App() {
   return (
     <div className="App">
       <Switch>
-        <Route path="/" />
+        <Route path="/" component={Home} />
         <Route path="/clients" component={Clients} />
         <Route
           path="/clients/:clientNumber/accounts"
-          component={ClientAccountsPage}
-        />
-        <Route
-          path="/:clientNumber/accounts/:account"
           component={ClientAccountsPage}
         />
       </Switch>
