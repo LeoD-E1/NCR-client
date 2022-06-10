@@ -1,6 +1,5 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useRef } from "react";
 import { useLocation } from "wouter";
-import apiCaller from "../../utils/apiCaller";
 import Card from "../../components/Card/Card";
 import "../Clients/clients.styles.css";
 import Layout from "../../components/Layout/Layout";
@@ -8,38 +7,21 @@ import Transfers from "../../components/transfers/Transfers";
 
 import Modal from "../../components/modal/Modal";
 import TransferForm from "../../components/transfers/TransferForm";
+import useAccounts from "./hooks/useAccounts";
 
 const ClientAccounts = () => {
   const [location] = useLocation();
   const clientNumber = location.split("/")[2];
+  const { accounts, error, fetching } = useAccounts(clientNumber);
 
-  const [accounts, setAccounts] = useState([]);
-  const [fetching, setFetching] = useState(false);
-  const [error, setError] = useState(false);
   const [limit, setLimit] = useState(true);
   const [modal, setModal] = useState(false);
 
   const limitAccounts = !limit ? accounts.length : 5;
 
-  const getAccounts = async () => {
-    setFetching(true);
-    try {
-      const accounts = await apiCaller(`${location}`);
-      setAccounts(accounts);
-    } catch (error) {
-      setError(true);
-    }
-    setFetching(false);
-  };
-
   const showModal = () => {
     setModal(true);
   };
-
-  useEffect(() => {
-    getAccounts();
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
 
   return (
     <div>

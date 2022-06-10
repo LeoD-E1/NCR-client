@@ -6,8 +6,12 @@ function App() {
   return (
     <div className="App">
       <Switch>
-        <Route path="/" component={Clients} />
-        <Route path="/account/:clientNumber" component={ClientAccountsPage} />
+        <Route path="/" />
+        <Route path="/clients" component={Clients} />
+        <Route
+          path="/clients/:clientNumber/accounts"
+          component={ClientAccountsPage}
+        />
         <Route
           path="/:clientNumber/accounts/:account"
           component={ClientAccountsPage}

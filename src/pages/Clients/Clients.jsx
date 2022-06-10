@@ -38,7 +38,7 @@ const Clients = () => {
           ) : clients.length ? (
             clients.map((client) => (
               <a
-                href={`/account/${client.clientNumber}`}
+                href={`/clients/${client.clientNumber}/accounts`}
                 key={client.clientNumber}
               >
                 <Card info={client} type="client" />

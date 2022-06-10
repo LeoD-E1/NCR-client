@@ -1,6 +1,5 @@
 import React from "react";
 import "./modal.styles.css";
-import XButton from "../XButton";
 
 const Modal = (props) => {
   const { closeModal, title, children } = props;
@@ -10,7 +9,7 @@ const Modal = (props) => {
         <section className="modal-header">
           <h1>{title}</h1>
           <button className="modal-button" onClick={() => closeModal(false)}>
-            <XButton />
+            X
           </button>
         </section>
         <section className="modal-body">{children}</section>
