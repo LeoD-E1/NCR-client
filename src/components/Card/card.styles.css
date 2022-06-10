@@ -1,10 +1,10 @@
-.container-card {
+.container-card, .container-card-client {
   border: 1px solid #e6e6e6;
   border-radius: 5px;
   padding: 10px;
 }
 
-.container-card:hover {
+.container-card-client:hover {
   box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
   cursor: pointer;
 }
@@ -38,5 +38,4 @@
   justify-content: space-between;
   align-items: center;
   margin-top: 10px;
-  
 }

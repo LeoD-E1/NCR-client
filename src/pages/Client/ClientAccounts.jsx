@@ -1,4 +1,4 @@
-import React, { useState, useRef } from "react";
+import React, { useState } from "react";
 import { useLocation } from "wouter";
 import Card from "../../components/Card/Card";
 import "../Clients/clients.styles.css";
@@ -16,7 +16,6 @@ const ClientAccounts = () => {
 
   const [limit, setLimit] = useState(true);
   const [modal, setModal] = useState(false);
-
   const limitAccounts = !limit ? accounts.length : 5;
 
   const showModal = () => {

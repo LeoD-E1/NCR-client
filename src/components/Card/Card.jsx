@@ -24,7 +24,7 @@ const Card = (props) => {
 
     case "client":
       return (
-        <div className="container-card">
+        <div className="container-card-client">
           <div className="card-head">
             <div>
               <div className="account-name">{info.name.toUpperCase()}</div>
